@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo Telefónico</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+
+
+
+    <div class="contenedor-principal">
+        <h1>RECIBO TELEFÓNICO</h1>
+
+        <form action="" id="calculoMinutos">
+            <label for="cliente">Nombre del cliente</label>
+            <input type="text" id="cliente" name="cliente">
+            <br>
+
+        
+            <label for="minutos">Minutos de celular (10 MXN c/u)</label>
+            <input type="number" id="minutos" name="minutos" value="10" >
+            <br>
+            <br>
+
+            <hr>
+
+            <div>
+                <h2>TIPO DE PLAN</h2>
+
+                <label for="" id="plan">Tipo de plan</label>
+                <select name="plan" id="plan" >
+                    <option value="1">Solo Telefono(100 MXN)</option>
+                    <option value="2">Telefono + Internet (200 MXN)</option>
+                    <option value="3">Telefono + Internet + TV(300 MXN)</option>
+                </select>
+
+                <hr>
+            </div>
+        
+            <div>
+                <h2>Otros Servicios</h2>
+                <label for="" id="Extras">Otros Servicios</label> 
+                
+                <input type="checkbox" name="servicio" id="servicio1">
+                <label for="servicio1">Antivirus (50 MXN)</label>
+                <!-- <checkbox name="servicio1" id="servicio1" value="50"></checkbox> -->
+                <br>
+                <input type="checkbox" name="servicio2" id="servicio2">
+                <checkbox name="servicio2" id="servicio2" value="150">Servicios de Nube (150 MXN)</checkbox>
+
+                <input type="checkbox" name="servicio3" id="servicio3">
+                <checkbox name="servicio3" id="servicio3" value="250">Web Services (250 MXN)</checkbox>
+                <br>
+                <br>
+                <hr>
+            </div>
+
+
+            <h2>PAQUETES</h2>
+            <label for="">Paquetes</label>
+            <br>
+            <input type="radio" name="paquete" id="paquete1" value="100" required>
+            <label for="paquete1">Residencial (100 MXN)</label>
+            <br>
+            <input type="radio" name="paquete" id="paquete2" value="200">
+            <label for="paquete2">PYMES (200 MXN)</label>
+            <br>
+            <input type="radio" name="paquete" id="paquete3" value="300">
+            <label for="paquete3">Empresas (300 MXN)</label>
+            <br>
+            <br>
+            <hr>
+
+            <div class = "grid-item result">
+                <h2 for="resultado">Total a pagar</h2>
+                <input type="text" id="resultado" readonly>
+
+                <button type="button" onclick="calcular()">Calcular Recibo </button>
+
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+    
+        <script>
+
+        var formulario;
+
+        formulario = document.getElementById("calculoMinutos")
+
+
+
+        function calcular() {
+
+                    var total = 0;
+                    total = formulario.minutos.value * 10;
+
+            //alert("Hola mundo, estoy en JavaScript");
+            alert(formulario.minutos.value)
+            
+        }
+
+                function calcular() {
+
+                    var total = 0;
+                   var minutos = formulario.minutos.value;
+                   total = minutos * 10;
+
+                   var cliente = formulario.cliente.value;
+
+                   if (formulario.plan.value == "1") 
+                   { 
+                    total = total + 100;
+                    //CONDICION VERDADERA
+                   }
+
+                   else 
+                   {
+                    total =total;
+                    //CONDICION FALSA
+                   }
+                   
+
+                        if (formulario.plan.value == "2") 
+                     { 
+                     total = total + 200;
+                     //CONDICION VERDADERA
+                     }
+
+                        else 
+                       {
+                      total =total;
+                      //CONDICION FALSA
+                       }
+
+
+                        if (formulario.plan.value == "3")
+                       {
+                           total = total + 300;
+                           //CONDICION VERDADERA
+                       }
+
+                       else 
+                       {
+                           total =total;
+                           //CONDICION FALSA
+                       }
+
+                           if (formulario.paquete1.checked == true) 
+                           {total = total + 100;}
+
+                           if (formulario.paquete2.checked == true)
+                           {total = total + 200;}
+
+                           if (formulario.paquete3.checked == true)
+                           {total = total + 300;}
+
+
+                       
+                       if (formulario.servicio1.checked == true) {
+                        total = total + 50;
+                       }
+
+                       if (formulario.servicio2.checked == true) {
+                        total = total + 150;
+                       }
+
+                       if (formulario.servicio3.checked == true) {
+                        total = total + 250;
+                       }
+
+                       formulario.resultado.value = total
+
+            //alert("Hola mundo, estoy en JavaScript");
+            alert(total)
+            
+        }
+
+    </script>
+    
+</body>
+</html>

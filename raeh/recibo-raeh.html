@@ -228,6 +228,69 @@
         </form>
     </div>
 
+    
+    <script>
+        /* COMENTARIOS DE LA FUNCION*/
+
+        /* 'var' indica que es una variable*/
+        /* 'document' indica que estoy entrando al archiv HTML */
+        /* '.getElementById("calculoMinutos")'  obtiene la info de formulario */
+        var formulario = document.getElementById("calculoMinutos");
+    
+        function calcular() {
+            
+            var total = 0;
+            var minutos = formulario.minCel.value;
+            total = minutos * 10;
+
+            /* CONDICIONES EN JAVA */
+            if (formulario.plan.value == "tel")
+            {
+                total = total + 100;
+            }
+            /*
+                ELSE es la parte negativa 
+                de la primera condicion
+            */
+            else if (formulario.plan.value == "internet")
+            {
+                total = total + 200;
+            }
+            else if (formulario.plan.value == "tv")
+            {
+                total = total + 300;
+            }
+            
+            if (formulario.antivirus.checked)
+            {
+                total = total + 50;
+            }
+            if(formulario.nube.checked == true)
+            {
+                total = total + 150;
+            }
+            if (formulario.ws.checked == true)
+            {
+                total = total + 250;
+            }
+            
+            if (formulario.paquetes.value == "residencial")
+            {
+                total = total + 321;
+            }
+            else if (formulario.paquetes.value == "pyme")
+            {
+                total = total + 654;
+            }
+            else if (formulario.paquetes.value == "empresa")
+            {
+                total = total + 987;
+            }
+            
+            formulario.resultado.value = total;
+        }
+
+    </script>
 </body>
 
 </html>

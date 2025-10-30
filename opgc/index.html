@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen 2do parcial</title>
+
+    <p style="color: white; font-size: 50px; text-align: center; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">RECIBO TELEFÓNICO</p>
+
+    <style>
+
+        form{background-color: lightskyblue;
+        
+            width: 70%;
+
+            height: 600px;
+
+            margin: auto;
+            margin-top: 80px;
+
+            padding: 80px;
+
+            border: 80px solid lightseagreen;
+
+            display: flex;
+            
+            flex-direction: column;
+
+            justify-content: space-between;
+
+        }
+
+    </style>
+
+</head>
+
+<body style="background-color: lightslategray;">
+
+    <form action="" id="calculoMinutos">
+
+        <label for="cliente">Nombre del cliente</label>
+        <input type="text" name="cliente" id="cliente">
+
+        <label for="minutos">Minutos de llamadas a celular: (1.00 c/u)</label>
+        <input type="number" name="minutos" id="minCel">
+
+        <label for="tipos de plan">Tipos de Plan</label>
+
+        <label for="tipos de plan">Solo teléfono (100.00)</label>
+        <input type="radio" name="plan" id="tel" value="tel">
+        
+        <label for="tipos de plan">Teléfono + internet (200.00)</label>
+        <input type="radio" name="plan" id="internet" value="internet">
+       
+        <label for="tipos de plan">Teléfono + internet + TV (300.00)</label>
+        <input type="radio" name="plan" id="tv" value="tv">
+        
+        <br>
+
+        <label for="Otros servicios">Otros servicios</label>
+
+        <label for="antivurs">Antivirus (50.00)</label>
+        <input type="checkbox" name="antivirus" id="campo-antivurs">
+
+        <label for="Servicios de nube">Servicios de nube (150.00)</label>
+        <input type="checkbox" name="nube" id="campo-servicios de nube">
+
+        <label for="Servicios Web">Servicios Web (250.00)</label>
+        <input type="checkbox" name="ws" id="campo-servicios de web">
+
+        <label for="paquetes">Paquetes</label>
+
+        <select name="select" id="select">
+            <option value="residencial"> Residencial (100.00)</option>
+            <option value="PYMES">PYMES (200.00)</option>
+            <option value="EMPRESAS">EMPRESAS (300.00)</option>
+        </select>
+
+        <label for="Paquetes">Total a pagar</label>
+        <input type="text" id="resultado">
+
+        <input type="button" value="Calcular recibo" onclick="calcular()">
+
+    </form>
+
+    <script>
+
+        var formulario;
+
+        formulario = document.getElementById("calculoMinutos")
+
+        function calcular() {
+
+            var total = 0;
+            total = formulario.minCel.value;
+
+            var minutos = formulario.minCel.value;
+            total = minutos * 10;
+
+            var cliente = formulario.cliente.value;
+
+            if (formulario.plan.value == "tel")
+               { total = total + 100; }
+
+            if (formulario.plan.value == "internet")
+               { total = total + 200; }
+
+            if (formulario.plan.value == "tv")
+               { total = total + 300; }
+
+            if (formulario.antivirus.checked)
+                { total = total + 50; }
+
+            if (formulario.nube.checked == true)
+               { total = total + 150; }
+
+            if (formulario.ws.checked == true)
+               { total = total + 250; }
+
+            if (formulario.select.value == "residencial")
+               { total = total + 100; }
+
+            else if (formulario.select.value == "PYMES")
+                    { total = total + 200; }
+
+            else if (formulario.select.value == "EMPRESAS ")
+                    { total = total + 300; }
+
+            formulario.resultado.value = total;
+            //alert ("Hola mundo, estoy en javascript")
+            
+            alert (cli);
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

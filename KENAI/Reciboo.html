@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo Telefónico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form action="" method="get" id="CalculoMinutos">
+        <h1 class="titulo" style="text-align: center;">Recibo Telefónico</h1>
+
+        <div class="sub">
+            <h2 class="subtitulo">Nombre del Cliente</h2>
+            <label for="Cliente">
+                <input type="text" id="Cliente" name="Cliente">
+            </label>
+        </div>
+
+        <div class="sub">
+            <h2 class="subtitulo">Calcular Minutos</h2>
+            <label for="Minutos">Minutos de celular (10.00 MXN c/u)
+                <input type="number" placeholder="100" id="Minutos" name="Minutos" value="10">
+            </label>
+        </div>
+
+        <div class="sub">
+            <h2 class="subtitulo">Tipo de Plan</h2>
+            <label>
+                <input type="radio" name="Plan" value="Tel">Solo teléfono (240 MXN)
+            </label>
+            <label>
+                <input type="radio" name="Plan" value="Internet">Teléfono + Internet (200 MXN)
+            </label>
+            <label>
+                <input type="radio" name="Plan" value="Tv">Teléfono + Internet + TV (300 MXN)
+            </label>
+        </div>
+
+        <div class="sub">
+            <h2 class="subtitulo">Servicios Adicionales</h2>
+            <label>
+                <input type="checkbox" id="Antivirus" value="Antivirus">Antivirus (50 MXN)
+            </label>
+            <label>
+                <input type="checkbox" id="Nube" value="Nube">Servicio de Nube (150 MXN)
+            </label>
+            <label>
+                <input type="checkbox" id="Web" value="Web">Web Services (250 MXN)
+            </label>
+        </div>
+
+        <div class="sub">
+            <h2 class="subtitulo">Paquetes</h2>
+            <label for="Paquetes">
+                <select name="Paquetes" id="Paquetes">
+                    <option value="Residencial">Residencial (200 MXN)</option>
+                    <option value="PYMES">PYMES (300 MXN)</option>
+                    <option value="Empresas">Empresas (400 MXN)</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="sub">
+            <h2 class="subtitulo">Total a Pagar</h2>
+            <input type="text" id="Resultado" readonly>
+            <button class="boton" type="button" onclick="calcular(event)">Calcular</button>
+        </div>
+    </form>
+
+    <script>
+        var formulario = document.getElementById("CalculoMinutos");
+
+        function calcular(event) {
+            event.preventDefault(); 
+
+            
+
+            var total = 0;
+            var Minutos = parseInt(formulario.Minutos.value) || 0;
+            total += Minutos * 10;
+
+            var plan = formulario.Plan.value;
+            if (plan === "Tel") total += 100;
+            else if (plan === "Internet") total += 200;
+            else if (plan === "Tv") total += 300;
+
+            if (formulario.Antivirus.checked) total += 50;
+            if (formulario.Nube.checked) total += 150;
+            if (formulario.Web.checked) total += 250;
+
+            var paquete = formulario.Paquetes.value;
+            if (paquete === "Residencial") total += 200;
+            else if (paquete === "PYMES") total += 300;
+            else if (paquete === "Empresas") total += 400;
+
+            formulario.Resultado.value = total + " MXN";
+            alert("Total a pagar: " + total + " MXN");
+        }
+    </script>
+
+</body>
+</html>

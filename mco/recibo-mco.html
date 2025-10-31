@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo Telefónico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #24b360;
+        }
+        #Contenedor {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Recibo Telefónico</h1>
+    <div id="Contenedor">
+        <form id="formRecibo" onsubmit="calcular(event)">
+            
+            <label for="minCel">Minutos de llamadas a celular (10.00 c/u):</label><br>
+            <input type="number" id="minCel" name="minCel" min="0" step="1" value="0"><br><br>
+
+            <hr>
+
+            <label>Tipos de plan:</label><br>
+            <input type="radio" id="plan1" name="tipoPlan" value="plan1">
+            <label for="plan1">Solo teléfono (200.00)</label><br>
+
+            <input type="radio" id="plan2" name="tipoPlan" value="plan2">
+            <label for="plan2">Teléfono + Internet (450.00)</label><br>
+
+            <input type="radio" id="plan3" name="tipoPlan" value="plan3">
+            <label for="plan3">Teléfono + Internet + TV (850.00)</label><br><br>
+
+            <hr>
+
+            <label>Otros Servicios:</label><br>
+            <input type="checkbox" id="antivirus" name="antivirus">
+            <label for="antivirus">Antivirus (30.00)</label><br>
+
+            <input type="checkbox" id="nube" name="nube">
+            <label for="nube">Servicios de la nube (50.00)</label><br>
+
+            <input type="checkbox" id="ws" name="ws">
+            <label for="ws">Servicios Web (40.00)</label><br><br>
+
+            <hr>
+
+            <label for="Paquetes">Paquetes:</label><br>
+            <select name="Paquetes" id="Paquetes">
+                <option value="Residencial">Residencial ($100)</option>
+                <option value="PYMES">PYMES ($250)</option>
+                <option value="Empresas">Empresas ($500)</option>
+            </select>
+
+            <hr>
+            <button type="submit">Calcular Total a Pagar</button>
+        </form>
+
+        <div id="resultado" style="margin-top: 20px; font-weight: bold;"></div>
+    </div>
+
+   <script>
+    var formulario;
+
+    formulario = document.getElementById("formRecibo");
+
+    function calcular() {
+        var total = 0;
+
+        // Minutos
+        var minutos = formulario.minCel.value;
+        total = total + (minutos * 10);
+
+        // Tipo de plan
+        if (formulario.tipoPlan.value == "plan1") {
+            total = total + 200;
+        }
+        if (formulario.tipoPlan.value == "plan2") {
+            total = total + 450;
+        }
+        if (formulario.tipoPlan.value == "plan3") {
+            total = total + 850;
+        }
+
+        // Otros servicios
+        if (formulario.antivirus.checked == true) {
+            total = total + 30;
+        }
+        if (formulario.nube.checked == true) {
+            total = total + 50;
+        }
+        if (formulario.ws.checked == true) {
+            total = total + 40;
+        }
+
+        // Paquete
+        if (formulario.Paquetes.value == "Residencial") {
+            total = total + 100;
+        }
+        if (formulario.Paquetes.value == "PYMES") {
+            total = total + 250;
+        }
+        if (formulario.Paquetes.value == "Empresas") {
+            total = total + 500;
+        }
+
+        alert("Total a pagar es: $" + total);
+    }
+</script>
+
+</body>
+</html>

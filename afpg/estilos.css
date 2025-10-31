@@ -1,0 +1,100 @@
+*{
+    font-family: Helvetica, sans-serif;
+    background: rgb(210, 240, 255);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    border: 6px solid hsl(180, 50%, 80%);
+    padding: 10px;
+    
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 2 5px rgba(75, 169, 209, 0.915);
+}
+
+h2{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: rgb(163, 80, 241);
+    background:  hsl(180, 50%, 80%);
+}
+
+label{
+    
+}
+.SMinutos{
+    border: 3px solid  hsl(180, 50%, 80%);
+    padding: 5px;
+    margin: 15px;
+    background-color: white;
+    display: table-cell;
+    display: flex;
+    flex-direction: column;
+}
+
+.TypePlan{
+    border: 3px solid  hsl(180, 50%, 80%);
+    padding: 5px;
+    margin: 15px;
+    background-color: white;
+    display: table-cell;
+}
+
+.other-services{
+    border: 3px solid  hsl(180, 50%, 80%);
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    display: table-cell;
+}
+
+.paquetes{
+    border: 3px solid  hsl(180, 50%, 80%);
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    display: table-cell;
+}
+
+.TotalPagar{
+    border: 3px solid  hsl(180, 50%, 80%);
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    display: table-cell;
+}
+
+button{
+    background-color: RGB (rgb(148, 217, 251));
+    color: blueviolet;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+button:hover{
+    background-color: #0fa2f7e1;
+}
+
+input[type="radio"], .other-services input[type="checkbox"] {
+        order: -1;
+        padding: 5px;
+        border-radius: 5px;
+       
+    }

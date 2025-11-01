@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color:mediumspringgreen;
+    }
+    h1{
+        text-align: center;
+    }
+  body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .form-container {
+            width: 400px; 
+            border: 1px solid #000;
+            background-color: #90ee90; 
+        }
+        .section {
+            border-bottom: 1px solid #000;
+            padding: 10px 0;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .input-group label {
+            margin-bottom: 0;
+        }
+        .button-group {
+            padding-top: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #e0e0e0;
+            border: 1px solid #777;
+            cursor: pointer;
+        }
+
+</style>
+<body>
+
+    <form action="" method="get" id="CalculoMinutos">
+        <h1 class="titulo" style="text-align: center;">Recibo Telefónico</h1>
+
+        <div class="sub">
+            <h2 class="subtitulo">Calcular Minutos</h2>
+            <label for="Minutos">Minutos de celular (10.00 MXN c/u)
+             <input type="number" placeholder="100" id="Minutos" name="Minutos" value="10">
+            </label>
+        </div>
+                <div class="sub">
+            <label for="Cliente">nombre de cliente</label>
+             <input type="text" id="Cliente" name="Cliente">
+            </label>
+        </div>
+        <hr>
+
+        <div class="sub">
+            <h2 class="subtitulo">Tipo de Plan</h2>
+            <label for="Plan">
+                <input type="radio" id="Tel" name="Plan" value="Tel">Solo teléfono (100 MXN)
+            </label>
+            <label for="Plan">
+                <input type="radio" id="Internet" name="Plan" value="Internet">Teléfono + Internet (200 MXN)
+            </label>
+            <label for="Plan">
+                <input type="radio" id="Tv" name="Plan" value="Tv">Teléfono + Internet + TV (300 MXN)
+            </label>
+        </div>
+        <hr>
+
+        <div class="sub">
+            <h2 class="subtitulo">Servicios Adicionales</h2>
+            <label for="Servicios">
+                <input type="checkbox" name="Antivirus" id="Antivirus" value="Antivirus">Antivirus (50 MXN)
+            </label>
+            <label for="servicios">
+                <input type="checkbox" name="Nube" id="Nube" value="Nube">Servicio de Nube (150 MXN)
+            </label>
+            <label for="servicios">
+                <input type="checkbox" name="Web" id="Web" value="Web">Web Services (250 MXN)
+            </label>
+        </div>
+        <hr>
+
+        <div class="sub">
+            <h2 class="subtitulo">Paquetes</h2>
+            <label for="Paquetes">
+                <select name="Paquetes" id="Paquetes">
+                    <option value="None" name="None" id="None">Ninguno (00.00 MXN)</option>
+                    <option value="Residencial" name="Residencial" id="Residencial" >Residencial (200 MXN)</option>
+                    <option value="PYMES" name="PYMES" id="PYMES">PYMES (300 MXN)</option>
+                    <option value="Empresas" name="Empresas" id="Empresas">Empresas (400 MXN)</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="sub">
+            <h2 class="subtitulo">Total a Pagar</h2>
+            <input type="text" id="resultado" readonly>
+            <button class="boton" onclick="calcular()">Calcular</button>
+        </div>
+
+        <script>
+
+            var formulario; formulario = document.getElementById("CalculoMinutos");
+
+            function calcular() {
+                event.preventDefault();
+
+                var total = 0; var Minutos = formulario.Minutos.value; total = Minutos * 10;
+
+                var cliente = formulario.Cliente.value; 
+
+                if (formulario.Plan.value == "Tel") {
+                    total = total + 100; 
+                }
+                else {
+                    total = total;
+                }
+                
+                if (formulario.Plan.value == "Internet") {
+                    total = total + 200; 
+                }
+                else {
+                    total = total;
+                }
+
+                if (formulario.Plan.value == "Tv") {
+                    total = total + 300; 
+                }
+                else {
+                    total = total;
+                }
+
+
+                if (formulario.Antivirus.checked == true) {
+                    total = total + 50; 
+                }
+                else {
+                    total = total;
+                }
+
+                if (formulario.Nube.checked == true) {
+                    total = total + 150; 
+                }
+                else {
+                    total = total;
+                }
+
+                if (formulario.Web.checked == true) {
+                    total = total + 250; 
+                }
+                else {
+                    total = total;
+                }
+
+                
+
+                if (formulario.Paquetes.value == "Ninguno") {
+                    total = total + 0; 
+                } else if (formulario.Paquetes.value == "Residencial") {
+                total = total + 200
+                } else if (formulario.Paquetes.value == "PYMES") {
+                    total = total + 300; 
+                } else if (formulario.Paquetes.value == "Empresas") {
+                    total = total + 400; 
+                }
+
+                formulario.resultado.value = total + "MXN";
+
+                alert ("Total = " + total + "MXN");
+            }
+
+        </script>
+    </form>
+    
+</body>
+</html>

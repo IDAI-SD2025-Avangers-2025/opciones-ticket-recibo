@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen 2do parcial</title>
+
+    
+</head>
+
+<body style="background-color: greenyellow;">
+
+    <form id="calculoMinutos">
+        <h1>Calculadora de Recibo</h1>
+
+        <label for="cliente">Nombre de cliente</label>
+        <input type="text" name="cliente" id="cliente">
+
+        <label for="minutos">Minutos de llamadas a celular: (1.00 c/u)</label>
+        <input type="number" name="minutos" id="minCel">
+
+        <label for="tipos de plan">Tipos de Plan</label>
+
+        <label for="tipos de plan">Solo teléfono (100.00)
+        <input type="radio" name="plan" id="tel" value="tel">
+        </label>
+
+        <label for="tipos de plan">Teléfono + internet (200.00)
+        <input type="radio" name="plan" id="internet" value="internet">
+        </label>
+
+        <label for="tipos de plan">Teléfono + internet + TV (300.00)
+        <input type="radio" name="plan" id="tv" value="tv">
+        </label>
+        <br>
+
+        <label for="Otros servicios">Otros servicios</label>
+
+        <label for="antivurs">Antivirus (50.00)
+        <input type="checkbox" name="antivirus" id="campo-antivurs">
+        </label>
+
+        <label for="Servicios de nube">Servicios de nube (150.00)
+        <input type="checkbox" name="nube" id="campo-servicios-nube">
+        </label>
+
+        <label for="Servicios Web">Servicios Web (250.00)
+        <input type="checkbox" name="ws" id="campo-servicios-web">
+        </label>
+
+        <label for="Paquetes">Paquetes</label>
+        <div id="paquetes">
+            <select name="select" id="select">
+                <option value="residencial">Residencial(230.00)</option>
+                <option value="PYMES">PYMES(400.00)</option>
+                <option value="EMPRESAS">EMPRESAS(700.00)</option>
+            </select>
+        </div>
+
+        <div id="button">
+            <h2>TOTAL A PAGAR</h2>
+            <input type="text" id="calculo" readonly>
+            <input type="button" value="Calcular recibo" onclick="calcular()">
+        </div>
+    </form>
+    
+    <script src="javascript.js"></script>
+
+</body>
+</html>

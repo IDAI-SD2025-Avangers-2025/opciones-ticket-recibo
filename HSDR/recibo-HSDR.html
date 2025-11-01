@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Document</title>
+    
+    <style>
+        body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #507d39, #f7f9f2);
+}
+
+h1, h2{
+    text-align: center;
+    color: rgb(0, 0, 0);
+    text-shadow: #014d18 1px 1px 2px;
+}
+label{
+    margin-bottom: 10px;
+    color: #555555;
+}
+input, select{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+}
+button{
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #45a049;
+}
+form{
+    background-color: #f2f2f2;
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+}
+.formulario{
+    border: #014d18 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+.servicios{
+    border: #1ea647 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+.boton-calcular{
+    border: #014d18 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+tipos-de-plan{
+    margin-bottom: 20px;
+    border: #1ea647 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+    </style>
+</head>
+<body>
+  <div>
+    <hr>
+    <h1>Recibo Telefónico</h1>
+    <hr>
+  </div>
+
+  <form action="" method="get" id="calculo-minutos">
+
+    <div class="formulario">
+      <h2>Nombre del cliente</h2>
+      <label for="cliente"><input type="text" name="cliente" id="cliente"></label>
+    </div>
+
+    <div class="formulario">
+      <h2>Minutos de celular (10.00 MXN c/u)</h2>
+      <label for="minutos"></label>
+      <input type="number" placeholder="100" id="minutos" name="minutos" min="0" value="10">
+    </div>
+
+    <div class="formulario">
+      <h2>Tipos de plan</h2>
+      <label for="plan"><input type="radio" name="plan" id="internet" value="internet"> Solo teléfono ($100)</label><br>
+      <label for="plan"><input type="radio" name="plan" id="tel" value="tel"> Teléfono e Internet ($200)</label><br>
+      <label for="plan"><input type="radio" name="plan" id="TV" value="TV"> Teléfono, Internet y Televisión ($300)</label>
+    </div>
+
+    <div class="formulario">
+      <h2>Servicios adicionales</h2>
+    <label for="servicios">
+      <input type="checkbox" name="servicios" id="antivirus" value="antivirus"> Antivirus (50.00 MXN)
+      <input type="checkbox" name="servicios" id="nube" value="nube"> Servicio de nube (150.00 MXN)
+      <input type="checkbox" name="servicios" id="web" value="web"> Web services (250.00 MXN)
+    </label>
+    </div>
+
+    <div class="grid">
+      <h2>Paquetes</h2>
+      <label for="">
+      <select id="paquetes" name="paquetes">
+        <option value="none" id="none">Ninguno (0.00 MXN)</option>
+        <option value="residencial" id="residencial">Residencial (100 MXN)</option>
+        <option value="PYMES" id="PYMES">PYMES (200 MXN)</option>
+        <option value="empresas" id="empresas">Empresas (300 MXN)</option>
+      </select>
+      </label>
+    </div>
+
+    <div class="formulario">
+      <h2>Total a pagar</h2>
+      
+      <input type="text" id="resultado" readonly>
+      <button  id="botón" class="button" onclick="calcular()">Calcular</button>
+    </div>
+  </form>
+
+  <script>
+    var formulario = document.getElementById("calculo-minutos");
+    function calcular() {
+      event.preventDefault();
+        var total = 0;
+        var minutos= formulario.minutos.value;
+        total = minutos *10;
+        var cliente = formulario.cliente.value;
+        
+        if (formulario.plan.value == "internet"){
+            total = total + 100;
+        }
+        else{
+            total=total;
+        }
+        if (formulario.plan.value == "tel"){
+            total = total + 200;
+        }
+        else{
+            total=total;
+        }
+        if (formulario.plan.value == "TV"){
+            total = total + 300;
+        }
+        else{
+            total=total;
+        }
+        if (formulario.antivirus.checked == true){
+            total = total + 50;
+        }
+        
+        if (formulario.nube.checked == true){
+            total = total + 150;
+        }
+       
+        if (formulario.web.checked == true){
+            total = total + 250;
+        }
+       
+        
+        formulario.resultado.value = total;
+        if (formulario.paquetes.value = "none"){
+          total = total + 0;
+        }
+        else if (formulario.paquetes.value = "residencial"){
+          total = total +100
+        }
+        else if (formulario.paquetes.value = "PYME"){
+          total = total +200
+        }
+        else if (formulario.paquetes.value = "empresas"){
+          total = total +300
+        }
+        formulario.resultado.value = total + "MXN";
+
+        alert("total a pagar:" + total + "MXN");
+        
+    }
+  </script>
+</body>
+</html>

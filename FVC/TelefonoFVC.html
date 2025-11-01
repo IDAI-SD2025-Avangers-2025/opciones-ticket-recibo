@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcial2_Pagina</title>
+    <style>
+        body{
+            background-color: rgb(87, 206, 87);
+        }
+        form{
+            width: 500px;
+            height: 500px;
+            padding: auto;
+            border: 20px solid greenyellow;
+            box-shadow: 10 20 6 90 rgba(0, 0, 5, 0.9);
+            text-shadow: 0lvw;
+            
+            
+        }
+      
+        hr{
+            color: rgb(0, 0, 0);
+        }
+        #formss{
+            
+        }
+        .block{
+            box-shadow: 10 20 6 15 rgba(0, 0, 5, 0.9);
+        }
+        .block{
+            color: brown;
+            box-shadow: 10 20 30 20 rgba(0, 0, 0, 0.75);
+        }
+
+        
+    </style>
+</head>
+<body>
+
+
+
+    <form id="calculoMinutos" action="" method="get">
+        <h1>RECIBO DE TELEFONO</h1>
+        <!-- <div class="calculoMinutos">
+        <div class="section"> -->
+
+
+            <div class="section">
+                <label for="minutos">Minutos de llamadas a celular: (10.00 c/u)</label>
+                <input type="number" id="minutos" name="minutos" value="10" style="width: 50px;">
+            </div>
+        <br>
+        <hr>
+        <div class="section">
+            <label for="Cliente">Tipo de plan</label>
+            <div>
+                <input type="radio" id="solo_telefono" name="tipo_plan" value="100.00">
+                <label for="solo_telefono">telefono (100.00)
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="telefono_internet" name="tipo_plan" value="200.00" checked>
+                <label for="telefono_internet">telefono + internet (200.00)</label>
+            </div>
+            <div>
+                <input type="radio" id="telefono_internet_tv" name="tipo_plan" value="300.00">
+                <label for="telefono_internet_tv">Telefono + Internet + TV (300.00)</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <label>Otros Servicios</label>
+            <div>
+                <input type="checkbox" id="antivirus" name="servicios" value="50.00">                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                <label for="antivirus">Antivirus (50.00)</label>
+            </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+            <div>
+                <input type="checkbox" id="nube" name="servicios" value="150.00">
+                <label for="nube">Servicios de nube (150.00)</label>
+            </div>
+            <div>
+                <input type="checkbox" id="servicios_web" name="servicios" value="250.00">
+                <label for="servicios_web">Servicios web (250.00)</label>
+            </div>
+        </div>
+        </div>
+        <div class="section">
+        </div>
+        <div class="seccion">
+                <label class="etiqueta">Paquetes</label>
+                <select name="paquetes" id="paquetes">
+                    <option value="0">Residencial +0%</option>
+                    </select>
+            </div>
+
+            <div class="grid-item result">
+                <h2 for></h2>
+            </div>
+
+        <div class="button-group">
+
+                <button type="button" onclick="calcular()">
+                    calcular
+                </button>
+        </div>
+    </form>
+
+
+<!-- <form id="calculominutos"
+action="GET">
+
+
+    <label for="cliente">Nombre De Clientes</label>
+    <input type="text" name="cliente" id="cliente">
+    
+   
+
+    <label for="calculosMinutos">Minutos de llamada Celular</label>
+    <input type="number" id="minCel" 
+    value="10">
+    <br>
+    <hr>
+
+    Tipo de plan:
+
+    <hr>
+
+    
+<div id="formss">
+    <label for="check1">Solo telefono(100.00)</label>
+    <input type="radio" id="check1">
+    <br>
+
+    <label for="check1">Telefono+internet</label>
+    <input type="checkbox" id="check2">
+    <br>
+
+    <label for="check1">Solo telefono</label>
+    <input type="checkbox" id="check3">
+    <br>
+
+    <label for="check1">Solo telefono</label>
+    <input type="checkbox" id="check4">
+    <br>
+<br>
+<hr>
+    <ol>Otros servicios</ol>
+<hr>
+    <label for="check1">Antivirus(900)</label>
+    <input type="checkbox" id="check2">
+    <br>
+
+    <label for="check1">Sevicios x(800)</label>
+    <input type="checkbox" id="check3">
+    <br>
+
+    <label for="check1">milagros(800)</label>
+    <input type="checkbox" id="check4">
+    <br>
+
+    <br>
+
+    <label for="Date">Fecha de registtro</label>
+    <input type="datetime-local">
+<br>
+
+    <label for="email">Ingresar su correo</label>
+    <input type="email">
+    <br>
+    <label for="comments">Comentariso</label>
+    <input type="text">
+
+</div> -->
+
+
+
+
+   
+   
+   
+   
+   
+<!--    
+    <div class="button-group">
+                <button type="button" onclick="calcular()">
+                    Calcular
+                </button>
+            </div> -->
+     
+    
+
+    <!-- </form>  -->
+
+
+    
+
+    <script>
+
+        function calcular() {
+            var formulario = document.getElementById("calculoMinutos");
+
+            var total = 0;
+            var antivirus = 0;
+            var nube = 0;
+            var sWeb = 0;
+
+            var totalMinutos = parseInt(formulario.minutos.value) * 10;
+            var tipoPlan = parseFloat(formulario.tipo_plan.value);
+            //var antivirus = formulario.antivirus.checked ? parseFloat(formulario.antivirus.value) : 0;
+            if(formulario.antivirus.checked) { 
+                antivirus = parseFloat(formulario.antivirus.value); 
+            }
+            if(formulario.nube.checked) { nube = parseFloat(formulario.nube.value); }
+            if(formulario.servicios_web.checked) { sWeb = parseFloat(formulario.servicios_web.value); }
+            
+            total = totalMinutos + tipoPlan + antivirus + nube + sWeb;
+            alert(total);
+        }
+ 
+    </script>
+
+    
+</body>
+</html>
